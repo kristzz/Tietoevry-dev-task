@@ -5,11 +5,16 @@ import { Painting } from '../types';
 
 interface CardProps {
   painting: Painting;
+  isVisible: boolean;
 }
 
-const Card: React.FC<CardProps> = ({ painting }) => {
+const Card: React.FC<CardProps> = ({ painting, isVisible }) => {
   return (
-    <div className="border border-black p-4 rounded-lg shadow-lg w-48 h-72 relative">
+    <div
+      className={`relative transition-opacity duration-500 ease-in-out 
+        ${isVisible ? 'opacity-100' : 'opacity-0'}
+        lg:w-80 lg:h-[28rem] md:w-64 md:h-[23rem] w-72 h-96`} // Adjusted for 9:16 aspect ratio
+    >
       {painting.webImage && (
         <Link href={`/painting/${painting.objectNumber}`} passHref>
           <Image
@@ -17,8 +22,7 @@ const Card: React.FC<CardProps> = ({ painting }) => {
             alt={painting.title}
             fill
             style={{
-              objectFit: 'cover',
-              borderRadius: '0.5rem',
+              objectFit: 'cover', // Ensure the image covers the entire card
             }}
             className="rounded-lg cursor-pointer"
           />

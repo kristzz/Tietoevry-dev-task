@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Header from "./components/header";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -19,7 +20,8 @@ export default function RootLayout({
 
       <body className="flex flex-col items-center">
         <div>
-          <h1 className="text-2xl mt-4 mb-8">Rijksmuseum shuffle</h1>
+          
+          <Header />
         </div>
         <div>{children}</div>
       </body>
