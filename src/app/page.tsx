@@ -27,7 +27,9 @@ export default function Home() {
 
       setIsVisible(false);
       setTimeout(() => {
-        setPaintings(Array.from(selectedPaintings));
+        const paintingsArray = Array.from(selectedPaintings);
+        setPaintings(paintingsArray);
+        sessionStorage.setItem('paintings', JSON.stringify(paintingsArray));
         setIsVisible(true);
       }, 300);
     } catch (err: unknown) {
@@ -40,7 +42,12 @@ export default function Home() {
   };
 
   useEffect(() => {
-    fetchRandomPaintings();
+    const cachedPaintings = sessionStorage.getItem('paintings');
+    if (cachedPaintings) {
+      setPaintings(JSON.parse(cachedPaintings));
+    } else {
+      fetchRandomPaintings();
+    }
   }, [apiKey]);
 
   if (error) {
@@ -68,8 +75,11 @@ export default function Home() {
         ))}
       </div>
       <button 
-        onClick={fetchRandomPaintings} 
-        className="relative mt-4 px-6 py-3 text-white text-lg rounded shadow-md transition-all duration-300 transform hover:scale-105 hover:shadow-lg bg-gradient-to-r from-red-600 to-orange-500">
+        onClick={() => {
+          sessionStorage.removeItem('paintings');
+          fetchRandomPaintings();
+        }} 
+        className="relative mt-4 mb-8 px-6 py-3 text-white text-lg rounded shadow-md transition-all duration-300 transform hover:scale-105 hover:shadow-lg bg-gradient-to-r from-red-600 to-orange-500">
         Shuffle
       </button>
     </main>
