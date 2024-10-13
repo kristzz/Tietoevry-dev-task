@@ -11,7 +11,6 @@ export interface Painting {
   dating: Dating;
   objectNumber: string;
   materials: string[];
-  author?: Author;
 }
 
 export interface Dating {
@@ -20,12 +19,4 @@ export interface Dating {
   period?: number;
   yearEarly?: number;
   yearLate?: number;
-}
-
-export interface Author {
-  name: string;
-  dateOfBirth?: string;
-  dateOfDeath?: string;
-  nationality?: string;
-  biography?: string;
 }

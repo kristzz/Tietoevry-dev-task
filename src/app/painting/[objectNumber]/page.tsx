@@ -70,7 +70,7 @@ const PaintingDetails: React.FC<PaintingDetailsProps> = ({ params }) => {
           />
         </div>
 
-        <div className="flex flex-col justify-between">
+        <div className="flex flex-col">
           <div>
             <h1 className="text-3xl font-bold mb-4">{painting.title}</h1>
             <p className="text-lg mb-2"><strong>Artist:</strong> {painting.principalMaker}</p>
