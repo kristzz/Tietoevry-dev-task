@@ -13,7 +13,7 @@ const Card: React.FC<CardProps> = ({ painting, isVisible }) => {
     <div
       className={`relative transition-opacity duration-500 ease-in-out 
         ${isVisible ? 'opacity-100' : 'opacity-0'}
-        lg:w-80 lg:h-[28rem] md:w-64 md:h-[23rem] w-72 h-96`} // Adjusted for 9:16 aspect ratio
+        lg:w-80 lg:h-[28rem] md:w-64 md:h-[23rem] w-72 h-96`}
     >
       {painting.webImage && (
         <Link href={`/painting/${painting.objectNumber}`} passHref>
@@ -22,7 +22,7 @@ const Card: React.FC<CardProps> = ({ painting, isVisible }) => {
             alt={painting.title}
             fill
             style={{
-              objectFit: 'cover', // Ensure the image covers the entire card
+              objectFit: 'cover',
             }}
             className="rounded-lg cursor-pointer"
           />
